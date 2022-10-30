@@ -1,4 +1,12 @@
 #!/bin/bash
+# Getting
+dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
+#########################
+
+clear
+
+
 domain=$(cat /root/domain)
 apt install iptables iptables-persistent -y
 apt install curl socat xz-utils wget apt-transport-https gnupg gnupg2 gnupg1 dnsutils lsb-release -y 
@@ -22,8 +30,7 @@ bash -c "$(wget -O- https://raw.githubusercontent.com/trojan-gfw/trojan-quicksta
 mkdir /root/.acme.sh
 curl https://acme-install.netlify.app/acme.sh -o /root/.acme.sh/acme.sh
 chmod +x /root/.acme.sh/acme.sh
-cd /root/.acme.sh
-bash acme.sh --register-account -m admin@daponwisang.my.id
+/root/.acme.sh/acme.sh --set-default-ca  --server  letsencrypt
 /root/.acme.sh/acme.sh --issue -d $domain --standalone -k ec-256
 ~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /etc/v2ray/v2ray.crt --keypath /etc/v2ray/v2ray.key --ecc
 service squid start
@@ -518,7 +525,7 @@ chmod +x cek-ws
 chmod +x cek-vless
 chmod +x cek-tr
 chmod +x renew-ws
-cmod +x renew-vless
+chmod +x renew-vless
 chmod +x renew-tr
 chmod +x certv2ray
 cd
