@@ -30,6 +30,9 @@ wget https://raw.githubusercontent.com/lesta-2/sc/main/wg.sh && chmod +x wg.sh &
 #install v2ray
 wget https://raw.githubusercontent.com/lesta-2/sc/main/ins-vt.sh && chmod +x ins-vt.sh && screen -S v2ray ./ins-vt.sh
 wget https://raw.githubusercontent.com/lesta-2/sc/main/ins-trojango.sh && chmod +x ins-trojango.sh && screen -S Trojan-go ./ins-trojango.sh
+#
+#Instal Xray
+wget https://raw.githubusercontent.com/lesta-2/XRAY/main/install-xray.sh && chmod +x install-xray.sh && ./install-xray.sh
 #install L2TP
 wget https://raw.githubusercontent.com/lesta-2/sc/main/ipsec.sh && chmod +x ipsec.sh && screen -S ipsec ./ipsec.sh
 wget https://raw.githubusercontent.com/lesta-2/sc/main/set-br.sh && chmod +x set-br.sh && ./set-br.sh
