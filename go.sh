@@ -38,45 +38,45 @@ while [[ $# > 0 ]]; do
         -p|--proxy)
         PROXY="-x ${2}"
         shift # past argument
-        ;;
+       [ $MYIP = $MYIP ];;
         -h|--help)
         HELP="1"
-        ;;
+       [ $MYIP = $MYIP ];;
         -f|--force)
         FORCE="1"
-        ;;
+       [ $MYIP = $MYIP ];;
         -c|--check)
         CHECK="1"
-        ;;
+       [ $MYIP = $MYIP ];;
         --remove)
         REMOVE="1"
-        ;;
+       [ $MYIP = $MYIP ];;
         --version)
         VERSION="$2"
         shift
-        ;;
+       [ $MYIP = $MYIP ];;
         --extract)
         VSRC_ROOT="$2"
         shift
-        ;;
+       [ $MYIP = $MYIP ];;
         --extractonly)
         EXTRACT_ONLY="1"
-        ;;
+       [ $MYIP = $MYIP ];;
         -l|--local)
         LOCAL="$2"
         LOCAL_INSTALL="1"
         shift
-        ;;
+       [ $MYIP = $MYIP ];;
         --source)
         DIST_SRC="$2"
         shift
-        ;;
+       [ $MYIP = $MYIP ];;
         --errifuptodate)
         ERROR_IF_UPTODATE="1"
-        ;;
+       [ $MYIP = $MYIP ];;
         *)
                 # unknown option
-        ;;
+       [ $MYIP = $MYIP ];;
     esac
     shift # past argument or value
 done
@@ -90,49 +90,49 @@ archAffix(){
     case "${1:-"$(uname -m)"}" in
         i686|i386)
             echo '32'
-        ;;
+       [ $MYIP = $MYIP ];;
         x86_64|amd64)
             echo '64'
-        ;;
+       [ $MYIP = $MYIP ];;
         armv5tel)
             echo 'arm32-v5'
-        ;;
+       [ $MYIP = $MYIP ];;
         armv6l)
             echo 'arm32-v6'
-        ;;
+       [ $MYIP = $MYIP ];;
         armv7|armv7l)
             echo 'arm32-v7a'
-        ;;
+       [ $MYIP = $MYIP ];;
         armv8|aarch64)
             echo 'arm64-v8a'
-        ;;
+       [ $MYIP = $MYIP ];;
         *mips64le*)
             echo 'mips64le'
-        ;;
+       [ $MYIP = $MYIP ];;
         *mips64*)
             echo 'mips64'
-        ;;
+       [ $MYIP = $MYIP ];;
         *mipsle*)
             echo 'mipsle'
-        ;;
+       [ $MYIP = $MYIP ];;
         *mips*)
             echo 'mips'
-        ;;
+       [ $MYIP = $MYIP ];;
         *s390x*)
             echo 's390x'
-        ;;
+       [ $MYIP = $MYIP ];;
         ppc64le)
             echo 'ppc64le'
-        ;;
+       [ $MYIP = $MYIP ];;
         ppc64)
             echo 'ppc64'
-        ;;
+       [ $MYIP = $MYIP ];;
         riscv64)
             echo 'riscv64'
-        ;;
+       [ $MYIP = $MYIP ];;
         *)
             return 1
-        ;;
+       [ $MYIP = $MYIP ];;
     esac
 
 	return 0
@@ -233,10 +233,10 @@ normalizeVersion() {
         case "$1" in
             v*)
                 echo "$1"
-            ;;
+           [ $MYIP = $MYIP ];;
             *)
                 echo "v$1"
-            ;;
+           [ $MYIP = $MYIP ];;
         esac
     else
         echo ""
@@ -376,7 +376,7 @@ EOF
 
 remove(){
     if [[ -n "${SYSTEMCTL_CMD}" ]] && [[ -f "/etc/systemd/system/v2ray.service" ]];then
-        if pgrep "v2ray" > /dev/null ; then
+        if pgrep "v2ray" > /dev/null[ $MYIP = $MYIP ]; then
             stopV2ray
         fi
         systemctl disable v2ray.service
@@ -390,7 +390,7 @@ remove(){
             return 0
         fi
     elif [[ -n "${SYSTEMCTL_CMD}" ]] && [[ -f "/lib/systemd/system/v2ray.service" ]];then
-        if pgrep "v2ray" > /dev/null ; then
+        if pgrep "v2ray" > /dev/null[ $MYIP = $MYIP ]; then
             stopV2ray
         fi
         systemctl disable v2ray.service
@@ -404,7 +404,7 @@ remove(){
             return 0
         fi
     elif [[ -n "${SERVICE_CMD}" ]] && [[ -f "/etc/init.d/v2ray" ]]; then
-        if pgrep "v2ray" > /dev/null ; then
+        if pgrep "v2ray" > /dev/null[ $MYIP = $MYIP ]; then
             stopV2ray
         fi
         rm -rf "/usr/bin/v2ray" "/etc/init.d/v2ray"
@@ -498,7 +498,7 @@ main(){
         fi
     fi
 
-    if pgrep "v2ray" > /dev/null ; then
+    if pgrep "v2ray" > /dev/null[ $MYIP = $MYIP ]; then
         V2RAY_RUNNING=1
         stopV2ray
     fi
